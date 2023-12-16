@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-dark">Categories List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-outline-dark">  <i class="bi bi-plus-circle"></i> &nbsp Create New Category</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Display Order
+                </th>
+                <th>
+                    Created Date Time
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Category obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.Id
+                    </td>
+                    <td>
+                        @obj.Name
+                    </td>
+                    <td>
+                        @obj.DisplayOrder
+                    </td>
+                    <td>
+                        @obj.CreatedDateTime
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-light" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"> <i class="bi bi-pencil-square"> </i> Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-light" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"> <i class="bi bi-file-earmark-x"> </i> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
